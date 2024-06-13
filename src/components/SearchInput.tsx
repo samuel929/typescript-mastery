@@ -1,15 +1,12 @@
 import React from "react";
 import { Input } from "react-daisyui";
 
-interface ISearchBoxProps extends ISearchChangeHandler {
+type SearchBoxProps = {
   search: string;
-}
-
-interface ISearchChangeHandler {
   setSearch: (search: string) => void;
-}
+};
 
-function SearchInput({ search, setSearch }: ISearchBoxProps) {
+function SearchInput({ search, setSearch }: SearchBoxProps) {
   return (
     <div>
       {" "}
@@ -19,7 +16,9 @@ function SearchInput({ search, setSearch }: ISearchBoxProps) {
         placeholder='Search'
         className='w-24 md:w-auto'
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setSearch(e.target.value)
+        }
       />
     </div>
   );
